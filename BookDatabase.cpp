@@ -48,22 +48,12 @@ public:
 	}
 	
 	vector<Book*>* get_required(){
-		
+		return &required_books;
 	}
 	
 	vector<Book*>* get_optional(){
-		
+		return &optional_books;
 	}
-};
-
-class Book {
-	long int isbn;
-	string title;
-	string author;
-	string date;
-	int edition;
-	map<string, double> type_costs;
-	vector<Section*> required_by;
 };
 
 
