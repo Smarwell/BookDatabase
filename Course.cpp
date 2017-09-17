@@ -14,7 +14,7 @@ Course::Course(string id, string name)
 	
 Section* Course::get_section(int section_num){
 	if(sections.count(section_num) == 0){
-		sections[section_num] = new Section(section_num);
+		sections[section_num] = new Section(this, section_num);
 	}
 	return sections[section_num];
 }

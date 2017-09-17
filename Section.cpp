@@ -18,7 +18,23 @@ void Section::add_book(Book* book, bool required){
 }
 
 void Section::print_books(){
-	implement this, dummy!;
+	cout << "Required Books for " << parent->id << " " << section_num << ":\n";
+	if(required_books.size() != 0){
+		for(auto& const book : required_books){
+			cout << "\t" << book.get_listing();
+		}
+	} else {
+		cout << "\tNo books are required for this section\n";
+	}
+	cout << "Optional Books:\n"; 
+	if(optional_books.size() != 0){
+		for(auto& const book : optional_books){
+			cout << "\t" << book.get_listing();
+		}
+	} else {
+		cout << "\tNo books are optional for this section\n";
+	}
+	
 }
 
 vector<Book*>* get_required(){

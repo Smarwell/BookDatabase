@@ -50,15 +50,29 @@ void Book::set_cost(float cost, char version){
 string Book::get_listing(){
 	sstream output;
 	output << title;
-	while(output.str().size() < 32){
+	do{
 		output << " ";
-	}
+	} while(output.str().size() < 32);
 	output << "ISBN: " << isbn << endl;
 	return output.str();
 }
 
 void Book::print_info(){
-	cout << "Hey, get that lazy asshole Jacob to write this function!\n";
+	cout << title << endl;
+	cout << "\tISBN:\t" << isbn << endl;
+	cout << "\tAuthor:\t" << author << endl;
+	cout << "\tDate:\t" << date << endl;
+	if(edition != 0){
+		cout << "\tEdition: " << edition << endl;
+	}
+	cout << "\tPrice:\n";
+	for(int i=0; i<4; i++){
+		if(type_costs.count(version_codes[i]) == 1){
+			cout << "\t\t" << versions[i] << ":\t";
+			cout << type_costs[version_codes[i]] << endl;
+		}
+	}
+	
 }
 
 float get_max_cost(){
