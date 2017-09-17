@@ -1,0 +1,28 @@
+Book is defined by isbn
+Book:
+	title
+	author
+	isbn
+	date
+	edition
+	list of type costs:
+		new
+		used
+		rented
+		electronic
+	list of pointers to classes that require it
+
+Course is defined by department+course number
+Course:
+	department+course number?
+	name
+	dict of known sections (by section number)
+
+Section:
+	pointer to parent course
+	section number
+	list of pointers to required books
+	
+dict of books (by isbn)
+
+dict of courses (by department+course number)
