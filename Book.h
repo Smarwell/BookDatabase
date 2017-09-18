@@ -9,8 +9,6 @@
 
 using namespace std;
 
-regex date_regex("^\d\d\/\d{4}\n?$");
-
 char version_codes[] = {'N', 'U', 'R', 'E'};
 string versions[] = {"New", "Used", "Rented", "Electronic"};
 

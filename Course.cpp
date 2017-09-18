@@ -19,23 +19,23 @@ Section* Course::get_section(int section_num){
 	return sections[section_num];
 }
 
-set<Book*>* get_all_books(){
+set<Book*>* Course::get_all_books(){
 	set<Book*>* books = new set<Book*>();
-	for(auto& const section : sections){
-		for(auto& const book : &section.get_required()){
-			books.insert(book);
+	for(auto& section : sections){
+		for(auto& book : *section.second->get_required()){
+			books->insert(book);
 		}
-		for(auto& const book : &section.get_optional()){
-			books.insert(book);
+		for(auto& book : *section.second->get_optional()){
+			books->insert(book);
 		}
 	}
 	return books;
 }
 
-void print_all_books(){
+void Course::print_all_books(){
 	set<Book*>* books = get_all_books();
-	for(auto& const book : &books){
-		cout << book.get_listing();
+	for(auto& book : *books){
+		cout << book->get_listing();
 	}
 }
 

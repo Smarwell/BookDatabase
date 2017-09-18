@@ -1,6 +1,6 @@
 
 #include<iostream>
-#include<stringstream>
+#include<sstream>
 #include<cstdlib>
 #include<string>
 #include<map>
@@ -10,11 +10,8 @@
 using namespace std;
 
 Book::Book(long int isbn, string title)
-	:isbn(isbn), title(title){
-	author = "Unknown";
-	data = "Unknown";
-	edition = 0;
-}
+	:isbn(isbn), title(title), 
+	author("Unknown"), date("Unknown"), edition(0){}
 
 void Book::define(char characteristic, string value){	
 	switch(characteristic){
@@ -22,9 +19,10 @@ void Book::define(char characteristic, string value){
 			author = value;
 			break;
 		case 'E':
-			edition = stoi(value, nullptr);
+			edition = atoi(value.c_str());
 			break;
-		case 'D':
+		case 'D': {
+			regex date_regex("^[0-9]{2}/[0-9]{4}\n?$");
 			smatch match;
 			if(regex_match(value, match, date_regex)){
 				date = value;
@@ -32,6 +30,7 @@ void Book::define(char characteristic, string value){
 				cout << "Error: invalid date entered: " << value << endl;
 			}
 			break;
+		}
 		default:
 			cout << "Error: cannot assign to characteristic '" << 
 					characteristic << "'\n";
@@ -48,7 +47,7 @@ void Book::set_cost(float cost, char version){
 }
 
 string Book::get_listing(){
-	sstream output;
+	stringstream output;
 	output << title;
 	do{
 		output << " ";
@@ -75,7 +74,7 @@ void Book::print_info(){
 	
 }
 
-float get_max_cost(){
+float Book::get_max_cost(){
 	float max = -1;
 	for(auto const& cost : type_costs){
 		if(cost.second > max){
@@ -85,7 +84,7 @@ float get_max_cost(){
 	return max;
 }
 
-float get_min_cost(){
+float Book::get_min_cost(){
 	float min = 1e29;
 	for(auto const& cost : type_costs){
 		if(cost.second < min){

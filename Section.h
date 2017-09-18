@@ -4,14 +4,15 @@
 #include<iostream>
 #include<cstdlib>
 #include<string>
-#include "Course.h"
 #include "Book.h"
 
 using namespace std;
 
+class Course;
+
 class Section {
 	Course* parent;
-	int section_number;
+	int section_num;
 	vector<Book*> required_books;
 	vector<Book*> optional_books;
 public:

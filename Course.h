@@ -5,11 +5,14 @@
 #include<string>
 #include<map>
 #include<set>
-#include "Section.h"
 
 using namespace std;
 
+class Section;
+class Book;
+
 class Course {
+	friend class Section;
 	string id;
 	string name;
 	map<int, Section*> sections;

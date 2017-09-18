@@ -1,4 +1,4 @@
 
-bd: BookDatabase.cpp
-	g++ BookDatabase.cpp -o bd.exe
+bd: BookDatabase.cpp Course.cpp Section.cpp Book.cpp
+	g++ *.cpp -std=c++11 -o bd.exe
 	
